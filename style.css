@@ -54,10 +54,22 @@ body {
 }
 
 .hero h1 {
-  font-size: clamp(70px, 14vw, 190px);
+  font-size: clamp(65px, 12vw, 170px);
   line-height: 0.85;
-  letter-spacing: -8px;
+  letter-spacing: -6px;
   font-weight: 800;
+}
+
+.first-name {
+  display: block;
+}
+
+.last-name {
+  display: block;
+  font-size: 0.35em;
+  letter-spacing: 2px;
+  margin-top: 15px;
+  color: var(--accent);
 }
 
 .subtitle {
@@ -428,4 +440,200 @@ footer p {
     max-width: 350px;
     margin: auto;
   }
+}@media (max-width: 600px) {
+  .hero h1 {
+    font-size: 58px;
+    letter-spacing: -3px;
+  }
+
+  .last-name {
+    font-size: 0.32em;
+    margin-top: 10px;
+  }
+}.lightbox {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 9999;
+}
+
+.lightbox.active {
+  display: flex;
+}
+
+.lightbox img {
+  max-width: 95%;
+  max-height: 90vh;
+  object-fit: contain;
+}
+
+.close-lightbox {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 45px;
+  cursor: pointer;
+}/* ================= PREMIUM PROJECT FRAMES ================= */
+
+/* إطار الصور والفيديوهات */
+.social-card,
+.three-d-card,
+.project {
+  border: 1px solid rgba(200, 169, 107, 0.45);
+  border-radius: 14px;
+  overflow: hidden;
+  background: #111;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.03),
+    0 15px 40px rgba(0, 0, 0, 0.45);
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+/* حركة عند الوقوف بالماوس */
+.social-card:hover,
+.three-d-card:hover,
+.project:hover {
+  transform: translateY(-8px);
+  border-color: var(--accent);
+  box-shadow:
+    0 0 25px rgba(200, 169, 107, 0.18),
+    0 20px 50px rgba(0, 0, 0, 0.6);
+}
+
+/* الصور والفيديوهات */
+.social-card img,
+.three-d-card img,
+.three-d-card video,
+.project img,
+.project video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+/* Zoom بسيط */
+.social-card:hover img,
+.three-d-card:hover img,
+.project:hover img {
+  transform: scale(1.04);
+}
+
+/* شكل أجمل للموبايل */
+@media (max-width: 600px) {
+  .social-card,
+  .three-d-card,
+  .project {
+    border-radius: 10px;
+  }
+}/* إطار أسمك + Animation عند الـHover */
+
+.social-card,
+.three-d-card,
+.project {
+  border: 2px solid rgba(200, 169, 107, 0.65);
+  border-radius: 16px;
+  overflow: hidden;
+  background: #111;
+  box-shadow:
+    0 0 10px rgba(200, 169, 107, 0.12),
+    0 15px 40px rgba(0, 0, 0, 0.5);
+  transition: 
+    transform 0.4s ease,
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.social-card:hover,
+.three-d-card:hover,
+.project:hover {
+  transform: translateY(-10px) scale(1.02);
+  border-color: #f5c76a;
+  box-shadow:
+    0 0 12px rgba(200, 169, 107, 0.8),
+    0 0 30px rgba(200, 169, 107, 0.45),
+    0 25px 60px rgba(0, 0, 0, 0.7);
+}
+
+/* حركة للإطار نفسه */
+.social-card:hover,
+.three-d-card:hover,
+.project:hover {
+  animation: frameGlow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes frameGlow {
+  from {
+    box-shadow:
+      0 0 8px rgba(200, 169, 107, 0.4),
+      0 0 20px rgba(200, 169, 107, 0.2);
+  }
+
+  to {
+    box-shadow:
+      0 0 18px rgba(245, 199, 106, 0.9),
+      0 0 40px rgba(245, 199, 106, 0.5);
+  }
+}/* Video & Editing - ضبط مقاس الفيديو */
+.project video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  background: #000;
+}/* Vertical Video */
+.project.vertical-video {
+  aspect-ratio: 9 / 16;
+  height: auto;
+  max-width: 350px;
+}
+
+.project.vertical-video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}/* ترتيب الفيديوهات الطولية جنب بعض */
+.project-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  align-items: flex-start;
+}
+
+.project.vertical-video {
+  width: 260px;
+  max-width: 100%;
+  flex: 0 0 260px;
+  margin: 0;
+}.project-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.project.vertical-video {
+  width: 260px;
+  flex: 0 0 260px;
+  aspect-ratio: 9 / 16;
+  height: auto;
+}
+
+.project.vertical-video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
