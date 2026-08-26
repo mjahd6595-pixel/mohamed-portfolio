@@ -1,34 +1,21 @@
-// Smooth reveal animation
-const revealElements = document.querySelectorAll(
-  ".section-title, .work-category, .contact"
-);
+document.addEventListener("DOMContentLoaded", () => {
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImage = document.getElementById("lightboxImage");
+  const closeButton = document.getElementById("closeLightbox");
 
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = "1";
-        entry.target.style.transform = "translateY(0)";
-        observer.unobserve(entry.target);
-      }
-    });
-  },
-  {
-    threshold: 0.15,
-  }
-);
+  // أي صورة في الموقع ما عدا صورة الـLightbox نفسها
+  const images = document.querySelectorAll("img:not(#lightboxImage)");
 
-revealElements.forEach((element) => {
-  element.style.opacity = "0";
-  element.style.transform = "translateY(40px)";
-  element.style.transition = "opacity 0.8s ease, transform 0.8s ease";
+  images.forEach((image) => {
+    image.style.cursor = "pointer";
 
-  observer.observe(element);
-});
+    image.onclick = function () {
+      lightboxImage.src = this.src;
+      lightbox.style.display = "flex";
+    };
+  });
 
-// Play button effect
-const playButton = document.querySelector(".play-btn");
-
-playButton.addEventListener("click", () => {
-  alert("ضع هنا رابط أو ملف الفيديو الخاص بالـ Showreel 🎬");
+  closeButton.onclick = function () {
+    lightbox.style.display = "none";
+  };
 });
