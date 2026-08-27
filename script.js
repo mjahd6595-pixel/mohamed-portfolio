@@ -1,58 +1,68 @@
 document.addEventListener("DOMContentLoaded", () => {
+  /* ================= LIGHTBOX ================= */
+
   const lightbox = document.getElementById("lightbox");
   const lightboxImage = document.getElementById("lightboxImage");
   const closeButton = document.getElementById("closeLightbox");
 
-  // أي صورة في الموقع ما عدا صورة الـLightbox نفسها
   const images = document.querySelectorAll("img:not(#lightboxImage)");
 
   images.forEach((image) => {
     image.style.cursor = "pointer";
 
-    image.onclick = function () {
-      lightboxImage.src = this.src;
+    image.addEventListener("click", () => {
+      lightboxImage.src = image.src;
       lightbox.style.display = "flex";
-    };
+    });
   });
 
-  closeButton.onclick = function () {
-    lightbox.style.display = "none";
-  };
-});/* ================= SCROLL REVEAL ================= */
+  if (closeButton) {
+    closeButton.addEventListener("click", () => {
+      lightbox.style.display = "none";
+    });
+  }
 
-const revealElements = document.querySelectorAll(
-  ".work-category, .social-card, .three-d-card, .project, .contact"
-);
 
-revealElements.forEach((element) => {
-  element.classList.add("reveal");
-});
+  /* ================= SCROLL REVEAL ================= */
 
-const revealOnScroll = () => {
+  const revealElements = document.querySelectorAll(
+    ".work-category, .social-card, .three-d-card, .project, .contact"
+  );
+
   revealElements.forEach((element) => {
-    const elementTop = element.getBoundingClientRect().top;
-    const windowHeight = window.innerHeight;
-
-    if (elementTop < windowHeight - 80) {
-      element.classList.add("active");
-    }
+    element.classList.add("reveal");
   });
-};
 
-window.addEventListener("scroll", revealOnScroll);
+  const revealOnScroll = () => {
+    revealElements.forEach((element) => {
+      const elementTop = element.getBoundingClientRect().top;
 
-revealOnScroll();
-/* ================= PRELOADER + PAGE INTRO ================= */
+      if (elementTop < window.innerHeight - 80) {
+        element.classList.add("active");
+      }
+    });
+  };
 
-document.addEventListener("DOMContentLoaded", () => {
+  window.addEventListener("scroll", revealOnScroll);
+
+  revealOnScroll();
+
+
+  /* ================= PAGE LOADING ================= */
+
   document.body.classList.add("loading");
 });
+
+
+/* ================= PRELOADER ================= */
 
 window.addEventListener("load", () => {
   const preloader = document.getElementById("preloader");
 
   setTimeout(() => {
-    preloader.classList.add("hide");
+    if (preloader) {
+      preloader.classList.add("hide");
+    }
 
     document.body.classList.remove("loading");
     document.body.classList.add("loaded");
