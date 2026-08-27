@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /* ================= PRELOADER ================= */
 
-window.addEventListener("load", () => {
+window.addEventListener("DOMContentLoaded", () => {
   const preloader = document.getElementById("preloader");
 
   setTimeout(() => {
@@ -67,5 +67,5 @@ window.addEventListener("load", () => {
     document.body.classList.remove("loading");
     document.body.classList.add("loaded");
 
-  }, 1800);
+  }, 1500);
 });
