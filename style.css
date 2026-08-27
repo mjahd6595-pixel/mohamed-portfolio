@@ -636,4 +636,479 @@ footer p {
   height: 100%;
   object-fit: cover;
   display: block;
+}/* Reduce space after hero */
+.hero {
+  min-height: auto;
+  padding-bottom: 60px;
+}
+
+.hero-content {
+  padding-bottom: 20px;
+}.subtitle {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.subtitle span {
+  color: var(--accent);
+  font-size: 18px;
+}/* Premium separator between work sections */
+
+.work-category {
+  position: relative;
+  padding-bottom: 80px;
+  margin-bottom: 80px;
+}
+
+.work-category:not(:last-of-type)::after {
+  content: "✦";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  font-size: 16px;
+  width: 100%;
+  margin-top: 80px;
+  padding-top: 35px;
+  border-top: 1px solid rgba(200, 169, 107, 0.45);
+}/* Luxury glowing section divider */
+
+.section-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  width: 100%;
+  margin: 70px 0;
+}
+
+.section-divider span {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(200, 169, 107, 0.9),
+    transparent
+  );
+  box-shadow: 0 0 12px rgba(200, 169, 107, 0.5);
+}
+
+.section-divider b {
+  color: #d4af37;
+  font-size: 20px;
+  font-weight: normal;
+  text-shadow:
+    0 0 5px #d4af37,
+    0 0 15px rgba(212, 175, 55, 0.9),
+    0 0 30px rgba(212, 175, 55, 0.6);
+  animation: dividerGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes dividerGlow {
+  from {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+
+  to {
+    transform: scale(1.25);
+    opacity: 1;
+  }
+}.work-navigation {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 5px;
+}
+
+.work-navigation a {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  padding: 14px 22px;
+  border: 1px solid rgba(200, 169, 107, 0.6);
+  border-radius: 30px;
+  transition: 0.3s ease;
+}
+
+.work-navigation a:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 0 20px rgba(200, 169, 107, 0.3);
+  transform: translateY(-3px);
+}.work-navigation {
+  margin-bottom: 0 !important;
+}
+
+.work-category {
+  margin-top: 0 !important;
+}/* Make Editing videos same size as 3D videos */
+
+.project.vertical-video {
+  width: 350px;
+  flex: 0 0 350px;
+  max-width: 100%;
+  aspect-ratio: 9 / 16;
+  height: auto;
+}/* HERO GLOW - STRONGER */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: #c8a96b;
+  opacity: 0.18;
+  border-radius: 50%;
+  filter: blur(100px);
+  top: 50%;
+  right: -150px;
+  transform: translateY(-50%);
+  animation: glowMove 6s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes glowMove {
+  from {
+    transform: translateY(-50%) translateX(0) scale(1);
+    opacity: 0.12;
+  }
+
+  to {
+    transform: translateY(-55%) translateX(-80px) scale(1.15);
+    opacity: 0.28;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero::before {
+    width: 300px;
+    height: 300px;
+    right: -120px;
+    opacity: 0.22;
+    filter: blur(70px);
+  }
+}/* ================= CREATIVE NAME FRAME ================= */
+
+.hero h1 {
+  position: relative;
+  display: inline-block;
+  padding: 35px 45px;
+  isolation: isolate;
+}
+
+/* الخط العلوي والسفلي */
+.hero h1::before,
+.hero h1::after {
+  content: "";
+  position: absolute;
+  width: 55%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #c8a96b,
+    transparent
+  );
+  box-shadow: 0 0 15px rgba(200, 169, 107, 0.7);
+}
+
+/* الخط فوق */
+.hero h1::before {
+  top: 0;
+  left: 0;
+}
+
+/* الخط تحت */
+.hero h1::after {
+  bottom: 0;
+  right: 0;
+}
+
+/* زوايا الإطار */
+.first-name,
+.last-name {
+  position: relative;
+}
+
+/* Animation خفيف */
+.hero h1 {
+  animation: nameGlow 3s ease-in-out infinite;
+}
+
+@keyframes nameGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 3px rgba(200, 169, 107, 0.15));
+  }
+
+  50% {
+    filter:
+      drop-shadow(0 0 8px rgba(200, 169, 107, 0.5))
+      drop-shadow(0 0 20px rgba(200, 169, 107, 0.25));
+
+}
+}
+
+@media (max-width: 600px) {
+  .hero h1 {
+    padding: 25px 15px;
+  }
+}/* ================= SCROLL REVEAL ================= */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}/* Simple gold loading line */
+
+.loader-line {
+  width: 220px;
+  height: 2px;
+  margin: 25px auto 0;
+  background: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+
+.loader-line span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #c8a96b;
+  box-shadow: 0 0 12px rgba(200, 169, 107, 0.8);
+  transform: translateX(-100%);
+  animation: loadingLine 1.8s ease-in-out forwards;
+}
+
+@keyframes loadingLine {
+  to {
+    transform: translateX(0);
+  }
+}/* ================= PRELOADER ================= */
+
+.preloader {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100vh;
+  background: #0a0a0a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.preloader.hide {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loader-content {
+  text-align: center;
+}
+
+.loader-content h1 {
+  font-size: clamp(35px, 6vw, 75px);
+  letter-spacing: 8px;
+  margin: 0;
+  color: white;
+  font-weight: 400;
+}
+
+.loader-content h1 span {
+  display: block;
+  color: #c8a96b;
+  font-size: 0.45em;
+  letter-spacing: 12px;
+  margin-top: 10px;
+}
+
+.loader-line {
+  width: 220px;
+  height: 2px;
+  margin: 30px auto 0;
+  background: rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+}
+
+.loader-line span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #c8a96b;
+  box-shadow: 0 0 15px rgba(200, 169, 107, 0.9);
+  transform: translateX(-100%);
+  animation: loadingLine 1.8s ease forwards;
+}
+
+@keyframes loadingLine {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}/* ================= PAGE INTRO ================= */
+
+/* العناصر تكون مستخبية في البداية */
+
+body.loading .hero-content,
+body.loading .work-navigation {
+  opacity: 0;
+  transform: translateY(35px);
+}
+
+/* Hero يدخل أولًا */
+
+body.loaded .hero-content {
+  animation: pageIntro 1s ease forwards;
+}
+
+/* الأزرار تدخل بعده */
+
+body.loaded .work-navigation {
+  animation: pageIntro 0.8s ease forwards;
+  animation-delay: 0.5s;
+}
+
+@keyframes pageIntro {
+  from {
+    opacity: 0;
+    transform: translateY(35px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}/* ================= HORIZONTAL 3D VIDEO ================= */
+
+.three-d-card.horizontal-video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  max-height: none;
+}
+
+.three-d-card.horizontal-video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}/* FORCE HORIZONTAL 3D VIDEO */
+
+.horizontal-video {
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 16 / 9 !important;
+  max-height: none !important;
+  grid-column: 1 / -1 !important;
+}
+
+.horizontal-video video {
+  width: 100% !important;
+  height: 100% !important;
+  aspect-ratio: 16 / 9 !important;
+  object-fit: cover !important;
+}/* Space between 3D videos */
+
+.three-d-section .three-d-card {
+  margin-bottom: 25px;
+}/* Make the 4th 3D video bigger */
+
+.horizontal-video {
+  width: 110% !important;
+  margin-left: -5% !important;
+}/* Reduce space after last 3D video */
+
+.three-d-section {
+  margin-bottom: 1px !important;
+}.three-d-section .three-d-card:last-child {
+  margin-bottom: 0 !important;
+}/* REMOVE EXTRA SPACE BEFORE CONTACT */
+
+.work-category.three-d-section {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.work-category.three-d-section + section.contact {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}.section-divider:last-of-type {
+  margin-bottom: 0 !important;
+}/* Reduce huge space after 3D section */
+
+.work {
+  padding-bottom: 1px !important;
+}
+
+.contact {
+  margin-top: 0 !important;
+  padding-top: 40px !important;
+}/* Reduce space under WhatsApp */
+
+.contact {
+  padding-bottom: 0px !important;
+}/* Remove space between WhatsApp and footer */
+
+.contact {
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.contact-links {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+footer {
+  margin-top: 0 !important;
+  padding-top: 10px !important;
+}/* ================= PREMIUM GOLD GLOW ================= */
+
+.social-card,
+.project,
+.three-d-card {
+  border-color: rgba(200, 169, 107, 0.7) !important;
+
+  box-shadow:
+    0 0 8px rgba(200, 169, 107, 0.18),
+    0 0 20px rgba(200, 169, 107, 0.10),
+    0 12px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Glow أقوى عند الوقوف بالماوس */
+
+.social-card:hover,
+.project:hover,
+.three-d-card:hover {
+  border-color: #c8a96b !important;
+
+  box-shadow:
+    0 0 10px rgba(200, 169, 107, 0.5),
+    0 0 30px rgba(200, 169, 107, 0.3),
+    0 0 60px rgba(200, 169, 107, 0.12),
+    0 20px 40px rgba(0, 0, 0, 0.6);
 }
