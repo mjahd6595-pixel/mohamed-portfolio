@@ -1111,4 +1111,73 @@ footer {
     0 0 30px rgba(200, 169, 107, 0.3),
     0 0 60px rgba(200, 169, 107, 0.12),
     0 20px 40px rgba(0, 0, 0, 0.6);
+}/* ================= FIX WORK NAVIGATION ================= */
+
+.work-navigation {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 12px !important;
+  flex-wrap: wrap !important;
+
+  opacity: 1;
+  transform: none;
+
+  margin-top: 30px;
+}
+
+.work-navigation a {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+
+  text-decoration: none;
+  white-space: nowrap;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease;
+}
+
+body.loading .work-navigation {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+body.loaded .work-navigation {
+  animation: workNavIntro 0.6s ease-out 0.4s forwards;
+}
+
+@keyframes workNavIntro {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}/* ================= FIX HORIZONTAL 3D VIDEO ================= */
+
+.three-d-section .three-d-card.horizontal-video {
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 16 / 9 !important;
+
+  display: block !important;
+  grid-column: 1 / -1 !important;
+
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.three-d-section .three-d-card.horizontal-video video {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+
+  aspect-ratio: 16 / 9 !important;
+  object-fit: contain !important;
 }
